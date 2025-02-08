@@ -1,0 +1,75 @@
+/* General Styling */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+}
+
+/* Styling Code Blocks */
+code {
+  background: var(--md-code-bg-color);
+  color: var(--md-code-fg-color);
+  padding: 4px 6px;
+  border-radius: 5px;
+}
+
+/* Highlight MongoDB Queries */
+pre {
+  background: var(--md-code-bg-color);
+  color: var(--md-code-fg-color);
+  padding: 10px;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+
+/* Custom Header */
+h1 {
+  color: var(--md-primary-fg-color);
+  border-bottom: 3px solid var(--md-primary-fg-color);
+  padding-bottom: 5px;
+}
+h2 {
+  color: var(--md-accent-fg-color);
+  margin-top: 20px;
+}
+
+/* Collapsible Details */
+details {
+  background: var(--md-default-bg-color);
+  padding: 10px;
+  border-radius: 8px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+details summary {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--md-typeset-a-color);
+  cursor: pointer;
+}
+
+details[open] {
+  background: var(--md-accent-bg-color);
+}
+
+details a {
+  display: block;
+  padding: 5px 0;
+  color: var(--md-default-fg-color);
+  text-decoration: none;
+}
+
+details a:hover {
+  color: var(--md-accent-fg-color);
+  font-weight: bold;
+}
+
+/* Custom Footer */
+footer {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--md-default-fg-color);
+}

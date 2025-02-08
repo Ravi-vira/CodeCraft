@@ -1,0 +1,121 @@
+<pre><code>
+    &lt;!DOCTYPE html&gt;
+    &lt;html lang="en"&gt;
+    &lt;head&gt;
+        &lt;meta charset="UTF-8"&gt;
+        &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+        &lt;title&gt;Survey Form&lt;/title&gt;
+        &lt;style&gt;
+            body {
+                font-family: Arial, sans-serif;
+                margin: 20px;
+                background-color: #f9f9f9;
+            }
+            form {
+                max-width: 600px;
+                margin: auto;
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                background: #fff;
+            }
+            fieldset {
+                border: none;
+                margin-bottom: 20px;
+            }
+            legend {
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+            label {
+                display: block;
+                margin: 10px 0 5px;
+            }
+            input, select, textarea, button {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 15px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+            input[type="radio"], input[type="checkbox"] {
+                width: auto;
+            }
+            button {
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                cursor: pointer;
+                font-size: 16px;
+            }
+            button:hover {
+                background-color: #45a049;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Survey Form&lt;/h1&gt;
+        &lt;p&gt;We would love to hear your feedback. Please fill out this survey.&lt;/p&gt;
+        &lt;form action="/submit-survey" method="POST"&gt;
+            &lt;fieldset&gt;
+                &lt;legend&gt;Personal Information&lt;/legend&gt;
+                &lt;label for="name"&gt;Name:&lt;/label&gt;
+                &lt;input type="text" id="name" name="name" placeholder="Enter your name" required&gt;
+    
+                &lt;label for="email"&gt;Email:&lt;/label&gt;
+                &lt;input type="email" id="email" name="email" placeholder="Enter your email" required&gt;
+    
+                &lt;label for="age"&gt;Age:&lt;/label&gt;
+                &lt;input type="number" id="age" name="age" placeholder="Enter your age" min="1" max="100" required&gt;
+            &lt;/fieldset&gt;
+    
+            &lt;fieldset&gt;
+                &lt;legend&gt;Survey Questions&lt;/legend&gt;
+                &lt;label for="referral"&gt;How did you hear about us?&lt;/label&gt;
+                &lt;select id="referral" name="referral" required&gt;
+                    &lt;option value="" disabled selected&gt;Select an option&lt;/option&gt;
+                    &lt;option value="internet"&gt;Internet&lt;/option&gt;
+                    &lt;option value="friend"&gt;Friend&lt;/option&gt;
+                    &lt;option value="advertisement"&gt;Advertisement&lt;/option&gt;
+                    &lt;option value="other"&gt;Other&lt;/option&gt;
+                &lt;/select&gt;
+    
+                &lt;label&gt;Rate your satisfaction with our services:&lt;/label&gt;
+                &lt;input type="radio" id="satisfaction-1" name="satisfaction" value="1" required&gt;
+                &lt;label for="satisfaction-1"&gt;1 (Very Dissatisfied)&lt;/label&gt;
+    
+                &lt;input type="radio" id="satisfaction-2" name="satisfaction" value="2"&gt;
+                &lt;label for="satisfaction-2"&gt;2&lt;/label&gt;
+    
+                &lt;input type="radio" id="satisfaction-3" name="satisfaction" value="3"&gt;
+                &lt;label for="satisfaction-3"&gt;3&lt;/label&gt;
+    
+                &lt;input type="radio" id="satisfaction-4" name="satisfaction" value="4"&gt;
+                &lt;label for="satisfaction-4"&gt;4&lt;/label&gt;
+    
+                &lt;input type="radio" id="satisfaction-5" name="satisfaction" value="5"&gt;
+                &lt;label for="satisfaction-5"&gt;5 (Very Satisfied)&lt;/label&gt;
+    
+                &lt;label&gt;Which features do you use the most? (Select all that apply)&lt;/label&gt;
+                &lt;input type="checkbox" id="feature1" name="features" value="feature1"&gt;
+                &lt;label for="feature1"&gt;Feature 1&lt;/label&gt;
+    
+                &lt;input type="checkbox" id="feature2" name="features" value="feature2"&gt;
+                &lt;label for="feature2"&gt;Feature 2&lt;/label&gt;
+    
+                &lt;input type="checkbox" id="feature3" name="features" value="feature3"&gt;
+                &lt;label for="feature3"&gt;Feature 3&lt;/label&gt;
+            &lt;/fieldset&gt;
+    
+            &lt;fieldset&gt;
+                &lt;legend&gt;Additional Comments&lt;/legend&gt;
+                &lt;label for="comments"&gt;Your Feedback:&lt;/label&gt;
+                &lt;textarea id="comments" name="comments" rows="4" placeholder="Share your thoughts..."&gt;&lt;/textarea&gt;
+            &lt;/fieldset&gt;
+    
+            &lt;button type="submit"&gt;Submit&lt;/button&gt;
+        &lt;/form&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
+    </code></pre>
+    

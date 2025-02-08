@@ -1,0 +1,103 @@
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Awesome Password Generator&lt;/title&gt;
+    &lt;style&gt;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #845EC2, #D65DB1, #FF6F91, #FF9671, #FFC75F, #F9F871);
+            background-size: 300% 300%;
+            animation: gradient 15s ease infinite;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .title {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .password-display {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .password-text {
+            font-family: monospace;
+            font-size: 1.2rem;
+            color: #2c3e50;
+        }
+
+        .copy-btn {
+            background: #845EC2;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .generate-btn {
+            background: linear-gradient(90deg, #845EC2, #FF6F91);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.1rem;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="container"&gt;
+        &lt;h1 class="title"&gt;Password Generator&lt;/h1&gt;
+        &lt;div class="password-display"&gt;
+            &lt;span class="password-text" id="passwordDisplay"&gt;Click Generate!&lt;/span&gt;
+            &lt;button class="copy-btn" onclick="copyPassword()"&gt;Copy&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;button class="generate-btn" onclick="generatePassword()"&gt;Generate Password&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        function generatePassword() {
+            const length = 12;
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.&lt;&gt;?';
+            let password = '';
+            for (let i = 0; i &lt; length; i++) {
+                password += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            document.getElementById('passwordDisplay').textContent = password;
+        }
+        function copyPassword() {
+            const password = document.getElementById('passwordDisplay').textContent;
+            navigator.clipboard.writeText(password);
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;

@@ -1,0 +1,180 @@
+```html
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Currency Converter&lt;/title&gt;
+    &lt;style&gt;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+            padding: 20px;
+        }
+
+        .converter {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            width: 90%;
+            max-width: 400px;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            color: white;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            transition: transform 0.2s ease;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            transform: scale(1.02);
+        }
+
+        .convert-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .convert-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            text-align: center;
+            font-size: 18px;
+            display: none;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="converter"&gt;
+        &lt;h1&gt;Currency Converter&lt;/h1&gt;
+        &lt;div class="input-group"&gt;
+            &lt;label for="amount"&gt;Amount&lt;/label&gt;
+            &lt;input type="number" id="amount" placeholder="Enter amount" min="0" step="0.01"&gt;
+        &lt;/div&gt;
+        &lt;div class="input-group"&gt;
+            &lt;label for="from"&gt;From&lt;/label&gt;
+            &lt;select id="from"&gt;
+                &lt;option value="USD"&gt;US Dollar (USD)&lt;/option&gt;
+                &lt;option value="EUR"&gt;Euro (EUR)&lt;/option&gt;
+                &lt;option value="GBP"&gt;British Pound (GBP)&lt;/option&gt;
+                &lt;option value="INR"&gt;Indian Rupee (INR)&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/div&gt;
+        &lt;div class="input-group"&gt;
+            &lt;label for="to"&gt;To&lt;/label&gt;
+            &lt;select id="to"&gt;
+                &lt;option value="EUR"&gt;Euro (EUR)&lt;/option&gt;
+                &lt;option value="USD"&gt;US Dollar (USD)&lt;/option&gt;
+                &lt;option value="GBP"&gt;British Pound (GBP)&lt;/option&gt;
+                &lt;option value="INR"&gt;Indian Rupee (INR)&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/div&gt;
+        &lt;button class="convert-btn" onclick="convertCurrency()"&gt;Convert&lt;/button&gt;
+        &lt;div id="result"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        const rates = {
+            USD: { EUR: 0.85, GBP: 0.73, INR: 83.12, USD: 1 },
+            EUR: { USD: 1.18, GBP: 0.86, INR: 97.95, EUR: 1 },
+            GBP: { USD: 1.37, EUR: 1.16, INR: 113.89, GBP: 1 },
+            INR: { USD: 0.012, EUR: 0.010, GBP: 0.0088, INR: 1 }
+        };
+
+        function convertCurrency() {
+            const amount = parseFloat(document.getElementById('amount').value);
+            const fromCurrency = document.getElementById('from').value;
+            const toCurrency = document.getElementById('to').value;
+            const resultDiv = document.getElementById('result');
+
+            if (isNaN(amount) || amount &lt;= 0) {
+                showResult('Please enter a valid amount', true);
+                return;
+            }
+
+            const convertedAmount = amount * rates[fromCurrency][toCurrency];
+            const formattedResult = `${amount.toFixed(2)} ${fromCurrency} = ${convertedAmount.toFixed(2)} ${toCurrency}`;
+            showResult(formattedResult, false);
+        }
+
+        function showResult(message, isError) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+            resultDiv.textContent = message;
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
