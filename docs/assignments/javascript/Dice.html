@@ -1,0 +1,154 @@
+<pre><code>&lt;!DOCTYPE html&gt;
+    &lt;html lang="en"&gt;
+    &lt;head&gt;
+        &lt;meta charset="UTF-8"&gt;
+        &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+        &lt;title&gt;Simple Dice Game&lt;/title&gt;
+        &lt;style&gt;
+            body {
+                font-family: Arial, sans-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                margin: 0;
+                background-color: #f0f2f5;
+            }
+    
+            .game {
+                background: white;
+                padding: 2rem;
+                border-radius: 10px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                text-align: center;
+            }
+    
+            .players {
+                display: flex;
+                gap: 2rem;
+                margin: 2rem 0;
+            }
+    
+            .player {
+                flex: 1;
+                padding: 1rem;
+                background: #f8f9fa;
+                border-radius: 8px;
+                min-width: 150px;
+            }
+    
+            .active {
+                border: 3px solid #4CAF50;
+            }
+    
+            .dice {
+                font-size: 4rem;
+                margin: 1rem 0;
+                color: #2196F3;
+            }
+    
+            .winner {
+                background: #4CAF50;
+                color: white;
+            }
+    
+            button {
+                background: #2196F3;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                margin: 5px;
+                font-size: 1rem;
+            }
+    
+            button:hover {
+                background: #1976D2;
+            }
+    
+            #message {
+                margin-top: 1rem;
+                font-weight: bold;
+                min-height: 24px;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class="game"&gt;
+            &lt;h1&gt;Dice Game&lt;/h1&gt;
+            &lt;div class="players"&gt;
+                &lt;div id="player1" class="player active"&gt;
+                    &lt;h2&gt;Player 1&lt;/h2&gt;
+                    &lt;div class="dice"&gt;-&lt;/div&gt;
+                    &lt;div&gt;Score: &lt;span id="score1"&gt;0&lt;/span&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div id="player2" class="player"&gt;
+                    &lt;h2&gt;Player 2&lt;/h2&gt;
+                    &lt;div class="dice"&gt;-&lt;/div&gt;
+                    &lt;div&gt;Score: &lt;span id="score2"&gt;0&lt;/span&gt;&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div id="message"&gt;&lt;/div&gt;
+            &lt;button onclick="rollDice()"&gt;Roll Dice&lt;/button&gt;
+            &lt;button onclick="resetGame()"&gt;Reset&lt;/button&gt;
+        &lt;/div&gt;
+    
+        &lt;script&gt;
+            let currentPlayer = 1;
+            let scores = { player1: 0, player2: 0 };
+            let gameOver = false;
+    
+            function rollDice() {
+                if (gameOver) return;
+    
+                // Roll dice (1-6)
+                const roll = Math.floor(Math.random() * 6) + 1;
+                
+                // Update display and scores
+                const playerDiv = document.getElementById(`player${currentPlayer}`);
+                playerDiv.querySelector('.dice').textContent = roll;
+                scores[`player${currentPlayer}`] = roll;
+    
+                if (currentPlayer === 1) {
+                    currentPlayer = 2;
+                    document.getElementById('player1').classList.remove('active');
+                    document.getElementById('player2').classList.add('active');
+                } else {
+                    endGame();
+                }
+            }
+    
+            function endGame() {
+                gameOver = true;
+                document.getElementById('player2').classList.remove('active');
+    
+                const message = document.getElementById('message');
+                if (scores.player1 > scores.player2) {
+                    message.textContent = 'Player 1 Wins!';
+                    document.getElementById('player1').classList.add('winner');
+                } else if (scores.player2 > scores.player1) {
+                    message.textContent = 'Player 2 Wins!';
+                    document.getElementById('player2').classList.add('winner');
+                } else {
+                    message.textContent = "It's a Tie!";
+                }
+            }
+    
+            function resetGame() {
+                currentPlayer = 1;
+                scores = { player1: 0, player2: 0 };
+                gameOver = false;
+    
+                document.querySelectorAll('.dice').forEach(dice => dice.textContent = '-');
+                document.getElementById('message').textContent = '';
+                document.querySelectorAll('.player').forEach(player => {
+                    player.classList.remove('winner', 'active');
+                });
+                document.getElementById('player1').classList.add('active');
+            }
+        &lt;/script&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
+    </code></pre>
+    

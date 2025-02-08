@@ -1,0 +1,83 @@
+
+site_name: CodeCraft
+site_url: https://yourwebsite.com
+repo_url: https://github.com/Ravi-vira
+edit_uri: edit/assignments/
+
+# Theme Configuration
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: deep purple
+      accent: pink
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: cyan
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Fira Code
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.instant
+    - navigation.tracking
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+
+# Navigation
+nav:
+  - Home: index.md
+  - Assignments:
+      - MongoDB:
+          - Assignment 1: assignments/assignment1.md
+          - Assignment 3: assignments/assignment3.md
+      - Frontend Technologies:
+          - HTML:
+              - Assignment 2: assignments/html/assignment2.md
+          - JavaScript:
+              - Counter Project: assignments/javascript/Counter.md
+              - Dice Game: assignments/javascript/Dice_Game.md
+              - Currency Converter: assignments/javascript/Currency_Converter.md
+              - Password Generater: assignments/javascript/Password.md
+              - Gusse Number: assignments/javascript/GussE_Number.md 
+              - Assignment 11: assignments/javascript/Assignment11.md    
+              - Assignment 12 JavaScript OPS: assignments/javascript/Assignment12.md
+      - AI:
+          - OLLMA:
+              -  Chatbot application - User can select topic model give answers : assignments/GenAi/GenAi10.md
+      - Backend/Api:
+          - Node.js:
+              - Node JS TODO-LIST: assignments/Node_js/api.md
+              - URL Analyzer: assignments/Node_js/nURL.md
+              - Node HTTP SERVER: assignments/Node_js/http.md
+          - Bun Js: assignments/Bun.md
+          - Express Js:
+              - Express Js: assignments/Express/ExApi.md
+              - Express Template Engine: assignments/Express/extemp.md
+
+  - About: about.md
+
+
+
+# Plugins
+plugins:
+  - search
+  - table-reader
+
+# Extra Styling
+extra_css:
+  - stylesheets/custom.css
+
+extra_javascript:
+  - javascripts/custom.js
