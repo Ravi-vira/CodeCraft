@@ -11,7 +11,7 @@ This MkDocs-powered site serves as a comprehensive documentation of everything I
 - **Code Samples & Best Practices**: Important snippets and coding guidelines followed during the journey.  
 
 ## 🌍 Live Preview  
-[🔗 View the Documentation](https://preeminent-semifreddo-2e2329.netlify.app/)  
+[🔗 View the Documentation](https://ravi-codecraft-2e2329.netlify.app/)  
 
 ## 🛠️ Installation & Setup  
 
